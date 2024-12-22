@@ -1,0 +1,41 @@
+name: Validar código Python
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Validar sintaxis Python
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      - name: Ejecutar flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          
+      - name: Realizar commit tras los cambios
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Correcciones automáticas de GitHub Actions"
+          commit_user_name: "M. Luz Martín Simal [GitHub Actions]"
+          commit_user_mail: "luz.martin@alumnos.ui1.es"
+          branch: main
+
