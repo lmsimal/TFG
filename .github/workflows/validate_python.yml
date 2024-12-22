@@ -36,6 +36,6 @@ jobs:
         with:
           commit_message: "Correcciones automáticas de GitHub Actions"
           commit_user_name: "M. Luz Martín Simal [GitHub Actions]"
-          commit_user_mail: "luz.martin@alumnos.ui1.es"
+          commit_user_email: "luz.martin@alumnos.ui1.es"
           branch: main
 
