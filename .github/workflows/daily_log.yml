@@ -2,7 +2,7 @@ name: Generar y guardar registro diario
 
 on:
   schedule:
-    - cron: '16 21 * * *'  
+    - cron: '25 21 * * *'  
 
 jobs:
   generate-log:
