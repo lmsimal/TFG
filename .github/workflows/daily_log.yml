@@ -1,0 +1,27 @@
+name: Generar y guardar registro diario
+
+on:
+  schedule:
+    - cron: '16 21 * * *'  
+
+jobs:
+  generate-log:
+    name: Generar y guardar registro
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Generar archivo de registro
+        run: |
+          echo "Ejecución diaria: $(date)" >> daily_log.txt
+          cat daily_log.txt
+
+      - name: Realizar commit tras generar registro
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Registro diario generado automáticamente"
+          commit_user_name: "M. Luz Martín Simal [GitHub Actions]"
+          commit_user_email: "luz.martin@alumnos.ui1.es"
+          branch: main
