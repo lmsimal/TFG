@@ -2,7 +2,7 @@ name: Generar y guardar registro diario
 
 on:
   schedule:
-    - cron: '40 21 * * *' 
+    - cron: '48 20 * * *' 
   workflow_dispatch:  # Habilita ejecución manual   
 
 jobs:
